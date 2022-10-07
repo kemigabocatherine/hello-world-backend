@@ -1,51 +1,59 @@
-class Api::V1::GreetingsController < ApplicationController
-  before_action :set_greeting, only: %i[ show update destroy ]
+# frozen_string_literal: true
 
-  # GET /greetings
-  def index
-    @greetings = Greeting.all
+module Api
+  module V1
+    # This is the controller for the Greeting model
+    class GreetingsController < ApplicationController
+      before_action :set_greeting, only: %i[show update destroy]
 
-    render json: @greetings
-  end
+      # GET /greetings
+      def index
+        @greetings = Greeting.all
 
-  # GET /greetings/1
-  def show
-    render json: @greeting
-  end
+        render json: @greetings
+      end
 
-  # POST /greetings
-  def create
-    @greeting = Greeting.new(greeting_params)
+      # GET /greetings/1
+      def show
+        render json: @greeting
+      end
 
-    if @greeting.save
-      render json: @greeting, status: :created, location: @greeting
-    else
-      render json: @greeting.errors, status: :unprocessable_entity
+      # POST /greetings
+      def create
+        @greeting = Greeting.new(greeting_params)
+
+        if @greeting.save
+          render json: @greeting, status: :created, location: @greeting
+        else
+          render json: @greeting.errors, status: :unprocessable_entity
+        end
+      end
+
+      # PATCH/PUT /greetings/1
+      def update
+        if @greeting.update(greeting_params)
+          render json: @greeting
+        else
+          render json: @greeting.errors, status: :unprocessable_entity
+        end
+      end
+
+      # DELETE /greetings/1
+      def destroy
+        @greeting.destroy
+      end
+
+      private
+
+      # Use callbacks to share common setup or constraints between actions.
+      def set_greeting
+        @greeting = Greeting.find(params[:id])
+      end
+
+      # Only allow a list of trusted parameters through.
+      def greeting_params
+        params.require(:greeting).permit(:message)
+      end
     end
   end
-
-  # PATCH/PUT /greetings/1
-  def update
-    if @greeting.update(greeting_params)
-      render json: @greeting
-    else
-      render json: @greeting.errors, status: :unprocessable_entity
-    end
-  end
-
-  # DELETE /greetings/1
-  def destroy
-    @greeting.destroy
-  end
-
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_greeting
-      @greeting = Greeting.find(params[:id])
-    end
-
-    # Only allow a list of trusted parameters through.
-    def greeting_params
-      params.require(:greeting).permit(:message)
-    end
 end
