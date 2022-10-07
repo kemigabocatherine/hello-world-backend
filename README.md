@@ -1,6 +1,6 @@
 # Greeting generator Back-end
 
--This is a Rails back-end api for generating random greeting messages
+- This is a Rails back-end api for generating random greeting messages
 
 [Link to Front-end React app](https://github.com/kemigabocatherine/Hello-world-frontend)
 
