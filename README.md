@@ -2,7 +2,7 @@
 
 -This is a Rails back-end api for generating random greeting messages
 
-🔗 **[Link to Front-end React app](https://github.com/kemigabocatherine/Hello-world-frontend)
+[Link to Front-end React app](https://github.com/kemigabocatherine/Hello-world-frontend)
 
 ## Built With
 
@@ -76,7 +76,7 @@ rails db:seed
 
 - GitHub: [@Github](https://github.com/kemigabocatherine)
 
-- LinkedIn: [LinkedIn](https://www.linkedin.com/in/kemigabocatherine/)
+- LinkedIn: [@LinkedIn](https://www.linkedin.com/in/kemigabocatherine/)
 
 ## 🤝 Contributing
 
